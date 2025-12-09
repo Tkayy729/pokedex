@@ -1,5 +1,9 @@
 body {
-  background-color: aqua;
+  background-color: #dbf6e9;
+  color: #162447;
+}
+.App {
+  text-align: center;
 }
 
 h1 {
