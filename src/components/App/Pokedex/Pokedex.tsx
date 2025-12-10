@@ -1,3 +1,4 @@
+import PokeSearchResult from "../PokeSearchResult/PokeSearchResult";
 import "./Pokedex.css"
 
 const Pokedex = () => {
@@ -7,7 +8,7 @@ const Pokedex = () => {
         <p>Pokemon list</p>
       </div>
       <div className="pokesearchresult-container">
-        <p>pokemon search results</p>
+        <PokeSearchResult />
       </div>
     </div>
   );
