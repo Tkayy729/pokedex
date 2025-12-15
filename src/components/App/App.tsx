@@ -6,7 +6,7 @@ import {
   PokemonSchema,
   PokemonSpriteSchema,
   UnpatchedPokemonSchema,
-} from "../types/PokemonSchema";
+} from "../../types/PokemonSchema";
 
 interface AppState {
   searchField: string;
