@@ -1,24 +1,29 @@
-import React, { useState } from "react";
 import "./PokeSearchResult.css";
+import { PokemonSchema } from "../../../types/PokemonSchema";
 
-const PokeSearchResult = () => {
-  const [isPokemonSelected, SetIsPokemonSelected] = useState(true);
+interface PokeSearchResultProps {
+  selectedPokemon: PokemonSchema | null;
+}
+
+const PokeSearchResult = ({ selectedPokemon }: PokeSearchResultProps) => {
+  if (!selectedPokemon) {
+    return (
+      <div className="poke-result-card">
+        <h2>Welcome to Pokedex!</h2>
+      </div>
+    );
+  }
+
+  const { name, id, height, weight,base_experience } = selectedPokemon;
+
   return (
     <div className="poke-result-card">
-      {isPokemonSelected ? (
-        <div>
-          {/*add a pokemon image over here*/}
-          <p>Name: Pokemon</p>
-          <p>Id: some Id</p>
-          <p>Height: some Height</p>
-          <p>Weight: some Weight</p>
-          <p>Base Exp: 100xp</p>
-        </div>
-      ) : (
-        <div>
-            <h2>Welcome to Pokedex!</h2>
-        </div>
-      )}
+      {/* add a pokemon image over here */}
+      <p>Name: {name}</p>
+      <p>Id: {id}</p>
+      <p>Height: {height}</p>
+      <p>Weight: {weight}</p>
+      <p>Base Exp: {base_experience}</p>
     </div>
   );
 };
