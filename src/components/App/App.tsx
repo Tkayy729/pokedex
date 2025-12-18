@@ -18,8 +18,8 @@ interface AppState {
 class App extends React.Component<any, AppState> {
   state = {
     searchField: "",
-    allPokemons: [],
-    searchedPokemons: [],
+    allPokemons: [] as PokemonSchema[],
+    searchedPokemons: [] as PokemonSchema[],
     selectedPokemon: undefined,
   };
 
@@ -51,16 +51,31 @@ class App extends React.Component<any, AppState> {
     const patchedPokemons: PokemonSchema[] = this.patchPokemonData(pokemonData);
 
     this.setState({
+      searchField: "",
       allPokemons: patchedPokemons,
       searchedPokemons: patchedPokemons,
     });
   }
 
+  handleInputChange = (searchInput: string): void => {
+    const filteredPokes = this.state.allPokemons.filter(
+      ({ name }) =>
+        name && name.toLowerCase().includes(searchInput.toLowerCase())
+    );
+
+    this.setState({
+      searchField: searchInput,
+      searchedPokemons: filteredPokes,
+    });
+  };
   render() {
     return (
       <div className="App">
         <h1>Pokedex!</h1>
-        <Pokedex />
+        <Pokedex
+          handleInputChange={this.handleInputChange}
+          searchedPokemons={this.state.searchedPokemons}
+        />
       </div>
     );
   }
