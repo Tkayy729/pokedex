@@ -1,12 +1,17 @@
-import "./PokeCard.css"
+import "./PokeCard.css";
 
-const PokeCard = () => {
-  return (
-    <div className="poke-card">
-        <img alt="image" />
-        <p>Pokemon</p>
-    </div>
-  )
+interface PokeCardProps {
+  name?: string;
+  spriteUrl?: string;
 }
 
-export default PokeCard
+const PokeCard = ({ name, spriteUrl }: PokeCardProps) => {
+  return (
+    <div className="poke-card">
+      <img alt={name} src={spriteUrl} />
+      <p>{name}</p>
+    </div>
+  );
+};
+
+export default PokeCard;
